@@ -3,18 +3,188 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi página en GitHub Pages</title>
+  <title>Alex Official Scripts</title>
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
       font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: white;
+    }
+    
+    .container {
+      max-width: 420px;
+      width: 100%;
       text-align: center;
-      margin-top: 50px;
-      background-color: #f0f0f0;
+    }
+    
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid #e94560;
+      object-fit: cover;
+      margin-bottom: 15px;
+      box-shadow: 0 0 25px #e94560;
+    }
+    
+    h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    
+    .bio {
+      font-size: 15px;
+      color: #b8b8d1;
+      margin-bottom: 25px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    
+    .link {
+      display: block;
+      background: rgba(255,255,255,0.08);
+      border: 2px solid #e94560;
+      color: white;
+      padding: 16px;
+      margin-bottom: 14px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    .link:hover {
+      background: #e94560;
+      transform: scale(1.05);
+    }
+    
+    .footer {
+      margin-top: 25px;
+      font-size: 12px;
+      color: #6c6c8a;
+    }
+
+    #gui {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .gui-box {
+      background: #1a1a2e;
+      border: 2px solid #e94560;
+      border-radius: 16px;
+      padding: 25px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .gui-box h2 {
+      color: #e94560;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    .gui-box textarea {
+      width: 100%;
+      height: 140px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      color: white;
+      padding: 12px;
+      font-size: 13px;
+      margin-bottom: 15px;
+      resize: none;
+    }
+
+    .gui-box button {
+      background: #e94560;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    .gui-box button:hover {
+      background: #ff6b81;
     }
   </style>
 </head>
 <body>
-  <h1>¡Hola mundo!</h1>
-  <p>Esta es mi primera página en GitHub Pages.</p>
+
+  <div class="container">
+    <img class="avatar" src="https://via.placeholder.com/120" alt="Alex">
+    <h1>Alex Official Scripts</h1>
+    <p class="bio">🎮 Gamer | 💥 Exploits | 💰 Paids</p>
+
+    <div class="link" onclick="abrirGUI(1)">+1 Escape Monkey Script</div>
+    <div class="link" onclick="abrirGUI(2)">Muscle Beach Arena Script</div>
+    <div class="link" onclick="abrirGUI(3)">Cat Piece V3 Script</div>
+    <div class="link" onclick="abrirGUI(4)">Final Fire Script</div>
+    <div class="link" onclick="abrirGUI(5)">Muscle Masters Script</div>
+    <div class="link" onclick="abrirGUI(6)">Cat Piece V2 Script</div>
+
+    <p class="footer">@Made By : AlexOfficial</p>
+  </div>
+
+  <!-- GUI -->
+  <div id="gui">
+    <div class="gui-box">
+      <h2>COPY the Script</h2>
+      <textarea id="texto" readonly></textarea>
+      <br>
+      <button onclick="copiar()">COPY</button>
+      <button onclick="cerrarGUI()">Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    const scripts = {
+      1: `loadstring(game:HttpGet("https://raw.githubusercontent.com/alexgamingofficial2026-del/Alex-Hacks/refs/heads/main/EscapeMonkey"))()`,
+      2: `loadstring(game:HttpGet("https://raw.githubusercontent.com/alexgamingofficial2026-del/Alex-Hacks/refs/heads/main/MuscleBeachArena"))()`,
+      3: `loadstring(game:HttpGet("https://raw.githubusercontent.com/alexgamingofficial2026-del/Alex-Hacks/refs/heads/main/CatPieceV3"))()`,
+      4: `loadstring(game:HttpGet("https://raw.githubusercontent.com/alexgamingofficial2026-del/AlexGG/refs/heads/main/PANEL-PAID-SCRIPT-2026"))()`,
+      5: `loadstring(game:HttpGet("https://raw.githubusercontent.com/alexgamingofficial2026-del/Alex-Hacks/refs/heads/main/Muscle%20Masters"))()`,
+      6: `loadstring(game:HttpGet("https://raw.githubusercontent.com/alexgamingofficial2026-del/AlexGG2/refs/heads/main/CatPieceV2"))()`
+    };
+
+    function abrirGUI(numero) {
+      document.getElementById("texto").value = scripts[numero];
+      document.getElementById("gui").style.display = "flex";
+    }
+
+    function cerrarGUI() {
+      document.getElementById("gui").style.display = "none";
+    }
+
+    function copiar() {
+      const caja = document.getElementById("texto");
+      caja.select();
+      document.execCommand("copy");
+      alert("¡Script copiado!");
+    }
+  </script>
+
 </body>
 </html>
